@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('correct');
+            $table->string('incorrect1');
+            $table->string('incorrect2');
+            $table->string('incorrect3');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

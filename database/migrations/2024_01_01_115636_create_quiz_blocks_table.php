@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('quiz_blocks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('category_id');
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

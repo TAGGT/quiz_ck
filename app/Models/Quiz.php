@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Quiz extends Model
 {
     use HasFactory;
+
+    public function quiz_block(){
+        return $this->belongsTo(Quiz_blocks::class);
+    }
+
+    public function advice_texts(){
+        return $this->hasMany(Advice_text::class);
+    }
+
+    public function advice_pictures(){
+        return $this->hasMany(Advice_picture::class);
+    }
 }

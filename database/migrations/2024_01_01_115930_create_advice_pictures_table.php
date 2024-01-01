@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('advice_pictures', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('quiz_id');
+            $table->string('title');
+            $table->string('picuture_path');
             $table->timestamps();
         });
     }
