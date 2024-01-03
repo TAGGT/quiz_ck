@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdviceController;
 use Illuminate\Support\Facades\Route;
 
 /*
