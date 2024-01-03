@@ -31,4 +31,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+//Quizコントローラー
+Route::controller(QuizController::class)->middleware(['auth'])->group(function(){
+	Route::post('/quizzes', 'store_quiz_block')->name('store_quiz_block'); //問題ブロックの保存処理
+	Route::get('/quizzes/create', 'create')->name('create'); //投稿画面
+	Route::get('/quizzes/home', 'home')->name('home'); //ホーム画面
+	//Route::get('/quizzes/search', 'search')->name('search'); //検索
+	//Route::get('/quizzes/research', 'research')->name('research'); //再検索
+	//Route::put('/quizzes/{photo}', 'update')->name('update');//更新処理
+	//Route::get('/quizzes/{photo}', 'show')->name('show');//閲覧画面
+	//Route::delete('/quizzes/{photo}', 'delete')->name('delete'); //削除
+	Route::get('/quizzes/{quiz_block}/edit', 'edit')->name('edit');//編集機能
+	
+});
+
 require __DIR__.'/auth.php';

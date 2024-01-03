@@ -19,7 +19,7 @@
     
     <!-- ブログの投稿用フォーム -->
     <!-- actionの値の見直し可能性あり -->
-    <form action="/edit" id="post-photo" method="post" enctype="multipart/form-data">
+    <form action="/quizzes" id="post-photo" method="post" enctype="multipart/form-data">
       @csrf
       
       <div class="tag border-gray-400 w-2/3 border-solid border-2 rounded p-3 m-2">
