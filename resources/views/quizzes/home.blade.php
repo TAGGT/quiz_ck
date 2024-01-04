@@ -17,16 +17,18 @@
     </div>
 	<div class='my-photo m-1'>
 	@foreach($quiz_blocks as $quiz_block)
-    <div style="width:100%; height:450px;">
+    <div style="width:40%; height:30px;border:solid;margin:3px;padding:3px">
       <a href='/quizzes/{{ $quiz_block->id }}/edit'>
-        <p>{{ $quiz_block->title }}</p>
+        <p>{{ $quiz_block->name }}</p>
       </a>
     </div>
   @endforeach
-	  <div class='paginate flex justify-center'>
+  
+	</div>
+	
+	<div class='paginate flex justify-center'>
             {{ $quiz_blocks->links() }}
     </div>
-	</div>
 
   </main>
 

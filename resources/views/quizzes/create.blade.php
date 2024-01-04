@@ -31,7 +31,7 @@
 	      </select>
       
         <p>タイトル<br>
-        <input type="text" name="post[description]"></p>
+        <input type="text" name="post[name]"></p>
 
         <p>問題概要<br>
           <textarea name="post[description]" cols="20" rows="2"></textarea></p>
