@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
 //Quizコントローラー
 Route::controller(QuizController::class)->middleware(['auth'])->group(function(){
 	Route::post('/quizzes', 'store_quiz_block')->name('store_quiz_block'); //問題ブロックの保存処理
+	Route::post('/quizzes/add', 'add_quiz')->name('add_quiz'); //問題文の追加
 	Route::get('/quizzes/create', 'create')->name('create'); //投稿画面
 	Route::get('/quizzes/home', 'home')->name('home'); //ホーム画面
 	//Route::get('/quizzes/search', 'search')->name('search'); //検索

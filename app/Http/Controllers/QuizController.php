@@ -14,8 +14,7 @@ use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
-    //
-
+    
     public function store_quiz_block(Request $request, Quiz_block $quiz_block)
     {
         $input = $request['post'];
@@ -28,7 +27,16 @@ class QuizController extends Controller
 	    $quiz_block->fill($input)->save();
     
     
-		return redirect('/quizzes/home');
+		return redirect('quizzes/'.$quiz_block->id.'/edit');
+    }
+    
+    public function add_quiz(Request $request, Quiz $quiz)
+    {
+        $input = $request['post'];
+    
+        $quiz->fill($input)->save();
+    
+        return redirect('quizzes/'.$quiz->quiz_block_id.'/edit');
     }
 
     public function home()
@@ -39,5 +47,10 @@ class QuizController extends Controller
     public function create(Category $category)
     {
         return view('quizzes.create')->with(['categories' => $category->get()]);
+    }
+
+    public function edit(Quiz_block $quiz_block)
+    {
+        return view('quizzes.edit')->with(['categories' => $category->get(), 'quiz_block' => $quiz_block, 'quizzes' => $quiz_block->quizzes()->orderBy('created_at', 'ASC')->get()]);
     }
 }
