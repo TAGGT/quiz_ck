@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('quiz_block_id');
+            $table->foreignId('quiz_block_id')->onDelete('cascade');;
             $table->string('text');
             $table->string('answer');
             $table->string('choice1');

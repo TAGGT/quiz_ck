@@ -127,12 +127,7 @@
         </tr>
         <tr>
           <td>
-            <form action="/quizzes/{{ $quiz->id }}/quiz" id="edit-quiz" method="get" enctype="multipart/form-data">
-              @csrf
-              @method('PUT')
-              <input type="hidden" name="post[quiz_block_id]" value="{{ $quiz_block->id }}">
-              <input class='decide-button submit m-2' type="submit" value="編集">
-            </form>
+            <a href="/quizzes/quiz">編集</a>
           </td>
           <td>
             <form action="/quizzes/{{ $quiz->id }}/quiz" id="delete-quiz" method="post" enctype="multipart/form-data">

@@ -53,4 +53,35 @@ class QuizController extends Controller
     {
         return view('quizzes.edit')->with(['categories' => $category->get(), 'quiz_block' => $quiz_block, 'quizzes' => $quiz_block->quizzes()->orderBy('created_at', 'ASC')->get()]);
     }
+
+    public function column_edit(Quiz $quiz)
+    {
+        return view('quizzes.column_edit')->with(['quiz' => $quiz, 'quiz_block' => $quiz->quiz_block]);
+    }
+
+    public function delete_quiz(Quiz $quiz)
+    {
+        $quiz->delete();
+        return redirect('quizzes/'.$quiz->quiz_block_id.'/edit');
+    }
+
+    public function delete_quiz_block(Quiz_block $quiz_block)
+    {
+        $quiz_block->delete();
+        return redirect('quizzes/home');
+    }
+
+    public function block_update(Request $request, Quiz_block $quiz_block)
+    {
+        $input = $request['post'];
+        $quiz_block->fill($input)->save();
+        return redirect('quizzes/'.$quiz_block->id.'/edit');
+    }
+
+    public function column_update(Request $request, Quiz $quiz)
+    {
+        $input = $request['post'];
+        $quiz->fill($input)->save();
+        return redirect('quizzes/'.$quiz->quiz_block_id.'/edit');
+    }
 }
