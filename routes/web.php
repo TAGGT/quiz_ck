@@ -35,15 +35,18 @@ Route::middleware('auth')->group(function () {
 //Quizコントローラー
 Route::controller(QuizController::class)->middleware(['auth'])->group(function(){
 	Route::post('/quizzes', 'store_quiz_block')->name('store_quiz_block'); //問題ブロックの保存処理
-	Route::post('/quizzes/add', 'add_quiz')->name('add_quiz'); //問題文の追加
+	Route::post('/quizzes/add', 'add_quiz')->name('add_quiz'); //クイズカラムの追加
 	Route::get('/quizzes/create', 'create')->name('create'); //投稿画面
 	Route::get('/quizzes/home', 'home')->name('home'); //ホーム画面
 	//Route::get('/quizzes/search', 'search')->name('search'); //検索
 	//Route::get('/quizzes/research', 'research')->name('research'); //再検索
-	//Route::put('/quizzes/{photo}', 'update')->name('update');//更新処理
+	Route::put('/quizzes/{quiz_block}', 'block_update')->name('update');//クイズブロック更新処理
+	Route::put('/quizzes/{quiz_block}', 'column_update')->name('update');//クイズカラム更新処理
 	//Route::get('/quizzes/{photo}', 'show')->name('show');//閲覧画面
-	//Route::delete('/quizzes/{photo}', 'delete')->name('delete'); //削除
-	Route::get('/quizzes/{quiz_block}/edit', 'edit')->name('edit');//編集機能
+	//Route::delete('/quizzes/{photo}', 'delete')->name('delete'); //クイズブロックの削除
+	Route::delete('/quizzes/{quiz}/quiz', 'delete')->name('delete'); //クイズカラムの削除
+	Route::get('/quizzes/{quiz_block}/edit', 'edit')->name('edit');//編集画面の表示
+	
 	
 });
 

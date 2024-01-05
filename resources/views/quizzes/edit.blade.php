@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @vite('resources/css/app.css')
+  @vite('resources/css/quiz.css')
   <title>Document</title>
 </head>
 <x-app-layout>
@@ -19,8 +21,9 @@
     
     <!-- ブログの投稿用フォーム -->
     <!-- actionの値の見直し可能性あり -->
-    <form action="/quizzes" id="post-quiz-block" method="post" enctype="multipart/form-data">
+    <form action="/quizzes/{{ $quiz_block->id }}" id="post-quiz-block" method="post" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
       
       <div class="tag border-gray-400 w-2/3 border-solid border-2 rounded p-3 m-2">
         <h2>カテゴリー</h2>
@@ -69,10 +72,18 @@
       
       <p><input class='decide-button submit m-2' type="submit" value="保存"></p>
     </form>
+    
+    
 
     <div class="tag border-gray-400 w-2/3 border-solid border-2 rounded p-3 m-2 ">
       <h2>プレビュー</h2>
-      <table class="preview-quiz">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">The table header</th>
+          </tr>
+        </thead>
+        <tbody>
         @foreach($quizzes as $quiz)
         <tr>
           <td>
@@ -114,27 +125,28 @@
             {{ $quiz->choice3 }}
           </td>
         </tr>
-        <!-- 
         <tr>
           <td>
             <form action="/quizzes/{{ $quiz->id }}/quiz" id="edit-quiz" method="get" enctype="multipart/form-data">
               @csrf
+              @method('PUT')
               <input type="hidden" name="post[quiz_block_id]" value="{{ $quiz_block->id }}">
               <input class='decide-button submit m-2' type="submit" value="編集">
             </form>
           </td>
           <td>
-            <form action="/quizzes/{{ $quiz->id }}" id="delete-quiz" method="post" enctype="multipart/form-data">
+            <form action="/quizzes/{{ $quiz->id }}/quiz" id="delete-quiz" method="post" enctype="multipart/form-data">
               @csrf
+              @method('DELETE')
               <input type="hidden" name="_method" value="delete">
               <input type="hidden" name="post[quiz_block_id]" value="{{ $quiz_block->id }}">
               <input class='decide-button submit m-2' type="submit" value="削除">
             </form>
           </td>
         </tr>
-         -->
                   
         @endforeach
+        </tbody>
       </table>
     </div>
 
