@@ -38,7 +38,7 @@ Route::controller(QuizController::class)->middleware(['auth'])->group(function()
 	Route::post('/quizzes/add', 'add_quiz')->name('add_quiz'); //クイズカラムの追加
 	Route::get('/quizzes/create', 'create')->name('create'); //投稿画面
 	Route::get('/quizzes/home', 'home')->name('home'); //ホーム画面
-	Route::get('//quizzes/{quiz}/quiz', 'column_edit')->name('column_edit'); //クイズカラムの編集画面
+	Route::get('/quizzes/{quiz}/quiz', 'column_edit')->name('column_edit'); //クイズカラムの編集画面
 	//Route::get('/quizzes/search', 'search')->name('search'); //検索
 	//Route::get('/quizzes/research', 'research')->name('research'); //再検索
 	Route::put('/quizzes/{quiz_block}', 'block_update')->name('update');//クイズブロック更新処理

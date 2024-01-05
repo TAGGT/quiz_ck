@@ -19,7 +19,7 @@ class Quiz extends Model
     ];
 
     public function quiz_block(){
-        return $this->belongsTo(Quiz_blocks::class);
+        return $this->belongsTo(Quiz_block::class);
     }
 
     public function advice_texts(){

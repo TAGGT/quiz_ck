@@ -19,7 +19,7 @@
       <h1 class="underline text-2xl font-bold">問題編集</h1>
     </div>
         
-    <form action="/quizzes/{ $quiz->id}/quiz" id="post-quiz-column" method="post" enctype="multipart/form-data">
+    <form action="/quizzes/{{ $quiz->id }}/quiz" id="post-quiz-column" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 

@@ -21,11 +21,12 @@
     
     <!-- ブログの投稿用フォーム -->
     <!-- actionの値の見直し可能性あり -->
+    <div class="tag border-gray-400 w-2/3 border-solid border-2 rounded p-3 m-2">
     <form action="/quizzes/{{ $quiz_block->id }}" id="post-quiz-block" method="post" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       
-      <div class="tag border-gray-400 w-2/3 border-solid border-2 rounded p-3 m-2">
+      
         <h2>カテゴリー</h2>
         <select name="post[category_id]">
           @foreach($categories as $category)
@@ -42,9 +43,16 @@
 
         <p>問題概要<br>
           <textarea name="post[description]" cols="20" rows="2">{{ $quiz_block->description }}</textarea></p>
-      </div>
+      
       <p><input class='decide-button submit m-2' type="submit" value="保存"></p>
     </form>
+    
+    <form action="/quizzes/{{ $quiz_block->id }}" id="delete-quiz" method="post" enctype="multipart/form-data">
+      @csrf
+      @method('DELETE')
+      <input class='decide-button submit m-2' type="submit" value="削除">
+    </form>
+    </div>
       
     <form action="/quizzes/add" id="post-quiz-column" method="post" enctype="multipart/form-data">
     @csrf
@@ -127,7 +135,7 @@
         </tr>
         <tr>
           <td>
-            <a href="/quizzes/quiz">編集</a>
+            <a href="/quizzes/{{ $quiz->id }}/quiz">編集</a>
           </td>
           <td>
             <form action="/quizzes/{{ $quiz->id }}/quiz" id="delete-quiz" method="post" enctype="multipart/form-data">
