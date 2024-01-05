@@ -49,7 +49,7 @@ class QuizController extends Controller
         return view('quizzes.create')->with(['categories' => $category->get()]);
     }
 
-    public function edit(Quiz_block $quiz_block)
+    public function edit(Quiz_block $quiz_block, Category $category)
     {
         return view('quizzes.edit')->with(['categories' => $category->get(), 'quiz_block' => $quiz_block, 'quizzes' => $quiz_block->quizzes()->orderBy('created_at', 'ASC')->get()]);
     }
