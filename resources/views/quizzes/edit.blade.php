@@ -70,6 +70,74 @@
       <p><input class='decide-button submit m-2' type="submit" value="保存"></p>
     </form>
 
+    <div class="tag border-gray-400 w-2/3 border-solid border-2 rounded p-3 m-2 ">
+      <h2>プレビュー</h2>
+      <table class="preview-quiz">
+        @foreach($quizzes as $quiz)
+        <tr>
+          <td>
+            問題文
+          </td>
+          <td>
+            {{ $quiz->text }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            正解
+          </td>
+          <td>
+            {{ $quiz->answer }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            選択肢1
+          </td>
+          <td>
+            {{ $quiz->choice1 }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            選択肢2
+          </td>
+          <td>
+            {{ $quiz->choice2 }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            選択肢3
+          </td>
+          <td>
+            {{ $quiz->choice3 }}
+          </td>
+        </tr>
+        <!-- 
+        <tr>
+          <td>
+            <form action="/quizzes/{{ $quiz->id }}/quiz" id="edit-quiz" method="get" enctype="multipart/form-data">
+              @csrf
+              <input type="hidden" name="post[quiz_block_id]" value="{{ $quiz_block->id }}">
+              <input class='decide-button submit m-2' type="submit" value="編集">
+            </form>
+          </td>
+          <td>
+            <form action="/quizzes/{{ $quiz->id }}" id="delete-quiz" method="post" enctype="multipart/form-data">
+              @csrf
+              <input type="hidden" name="_method" value="delete">
+              <input type="hidden" name="post[quiz_block_id]" value="{{ $quiz_block->id }}">
+              <input class='decide-button submit m-2' type="submit" value="削除">
+            </form>
+          </td>
+        </tr>
+         -->
+                  
+        @endforeach
+      </table>
+    </div>
+
 </main>
 
 </body>
